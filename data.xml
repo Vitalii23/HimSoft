@@ -1,0 +1,35 @@
+<?xml version='1.0'?>
+<methods>
+    <methods>
+        <id>1</id>
+        <name>lfdghdlfh</name>
+        <method>gdfgd</method>
+        <formula>dfgdf</formula>
+        <type>1</type>
+        <isready>true</isready>
+    </methods>
+    <methods>
+        <id>2</id>
+        <name>kj;lkj</name>
+        <method>dfgdfg</method>
+        <formula>mbnmb</formula>
+        <type>2</type>
+        <isready>false</isready>
+    </methods>
+    <methods>
+        <id>3</id>
+        <name>jklhkhj</name>
+        <method>hgyrtey</method>
+        <formula>hgjgj</formula>
+        <type>5</type>
+        <isready>true</isready>
+    </methods>
+    <methods>
+        <id>5</id>
+        <name>jhgjgh</name>
+        <method>tyuty</method>
+        <formula>gfdgdf</formula>
+        <type>5</type>
+        <isready>null</isready>
+    </methods>
+</methods>
