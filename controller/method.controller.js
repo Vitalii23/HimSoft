@@ -1,6 +1,6 @@
 const db = require("../model");
 const Methods = db.methods;
-const Op = db.Sequelize.Op;
+const xml = require('xml');
 
 exports.addMethod = (require, result) => {
     const method = {
@@ -10,6 +10,7 @@ exports.addMethod = (require, result) => {
         type: require.body.type,
         isready: require.body.isready,
     };
+   // var obj = js2xmlparser.parse("methods", method);
 
     Methods.create(method).then(data => {
         result.send(data);
@@ -21,11 +22,9 @@ exports.addMethod = (require, result) => {
 };
 
 exports.getMethods = (require, result) => {
-    const {name, method, formula, type, isready} = require.query;
-    var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
-
-    Methods.findAll({ where: condition}).then(data => {
-        result.send(data);
+    //const {name, method, formula, type, isready} = require.query;
+    Methods.findAll().then(data => {
+        result.header('Content-Type', 'text/xml').send(xml(data));
     }).catch(error => {
         result.status(500).send({
             message: error.message || "Error occured while retrieving method"
@@ -36,7 +35,7 @@ exports.getMethods = (require, result) => {
 exports.getMethodById = (require, result) => {
     const id = require.params.id;
     Methods.findByPk(id).then(data => {
-        result.send(data);
+        result.header('Content-Type', 'text/xml').send(data);
     }).catch(error =>{
         result.status(500).send({
             message: "Error retrieving Methods with id=" + id

@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+const xmlparser = require('express-xml-bodyparser');
 const cors = require("cors");
 const port = 3000;
 
@@ -10,23 +10,21 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(xmlparser("method"));
 
 const db = require("./model");
 
 db.sequelize.sync();
 
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to application." });
+    var xmlString = ('<info>Welcome to application</info>');
+    res.set('Content-Type', 'text/xml');
+    res.send(xmlString);
 });
 
 require("./routes/method.routes")(app);
-
-/*const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}.`);
-});*/
 
 process.on('SIGTERM', shutDown);
 process.on('SIGINT', shutDown);
