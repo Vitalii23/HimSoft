@@ -5,12 +5,16 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": "latest",
+    "bookshelf": "^1.1.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-xml-bodyparser": "^0.3.0",
     "js2xmlparser": "^4.0.1",
     "jsontoxml": "^1.0.1",
+    "knex": "^0.20.11",
     "libxmljs": "^0.19.7",
     "pg": "^7.18.2",
+    "sequelize": "^5.21.5",
     "xml": "^1.0.1",
     "xml-js": "^1.6.11"
   },
